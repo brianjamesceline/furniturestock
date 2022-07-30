@@ -1,3 +1,23 @@
+# Creating a new react app
+
+cd ~/Desktop
+npx create-react-app test_react_project
+cd test_react_project
+
+To open file in vscode
+command o
+
+npm start to open a localhost 3000
+control c to close
+
+---
+
+# create directories
+
+- mkdir src/components
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
