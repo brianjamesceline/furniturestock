@@ -1,10 +1,14 @@
 import React from 'react'
 
-export default function ProductRow() {
+export default function ProductRow(props) {
+  const { product } = props;
+  // If product is stocked, print the product.name. If not, print product.name in span with style applied.
+  const name = product.stocked ? product.name : <span style={{ color: 'red' }}>{product.name}</span>;
+  
   return (
     <tr>
-      <td>Sofa</td>
-      <td>£2950.00</td>
+      <td>{name}</td>
+      <td>{product.price}</td>
     </tr>
   )
 }
