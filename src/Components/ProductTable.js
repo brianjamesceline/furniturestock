@@ -3,7 +3,7 @@ import ProductCategoryRow from './ProductCategoryRow'
 import ProductRow from './ProductRow'
 
 export default function ProductTable(props) {
-  const { products } = props;
+  const { products, inStockOnly } = props;
 
 
   // This defines the output showing empty square bracket.
@@ -12,6 +12,10 @@ export default function ProductTable(props) {
   let lastCategory = null;
 
   products.forEach((product) => {
+    if (inStockOnly && !product.stocked) {
+      return;
+    }
+
     if (product.category !== lastCategory) {
       rows.push(
         <ProductCategoryRow
@@ -29,7 +33,7 @@ export default function ProductTable(props) {
         key={product.name}
       />
     )
-    // we are now resetting the product category to be lastCategory at completion of the above, before going through the next iteration in the loop.
+    // we are now resetting the product.category to be lastCategory at completion of the above, before going through the next iteration in the loop.
     lastCategory = product.category;
   })
 
