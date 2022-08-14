@@ -3,7 +3,7 @@ import ProductCategoryRow from './ProductCategoryRow'
 import ProductRow from './ProductRow'
 
 export default function ProductTable(props) {
-  const { products, inStockOnly } = props;
+  const { products, inStockOnly, filterText } = props;
 
 
   // This defines the output showing empty square bracket.
@@ -12,6 +12,11 @@ export default function ProductTable(props) {
   let lastCategory = null;
 
   products.forEach((product) => {
+    // Using the javascript function indexOf, we are essentially searching for a match.
+    if (product.name.indexOf(filterText) === -1) {
+      return;
+    }
+
     if (inStockOnly && !product.stocked) {
       return;
     }
